@@ -1,7 +1,9 @@
 package com.mqxu.sm.factory;
 
 import com.mqxu.sm.service.AdminService;
+import com.mqxu.sm.service.DepartmentService;
 import com.mqxu.sm.service.impl.AdminServiceImpl;
+import com.mqxu.sm.service.impl.DepartmentServiceImpl;
 
 /**
  * @description: Service工厂类
@@ -11,5 +13,9 @@ import com.mqxu.sm.service.impl.AdminServiceImpl;
 public class ServiceFactory {
     public static AdminService getAdminServiceInstance() {
         return new AdminServiceImpl();
+    }
+
+    public static DepartmentService getDepartmentServiceInstance() {
+        return new DepartmentServiceImpl();
     }
 }

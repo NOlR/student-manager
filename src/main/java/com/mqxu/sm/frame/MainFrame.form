@@ -1,14 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.mqxu.sm.frame.MainFrame">
-  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="767" height="635"/>
     </constraints>
     <properties>
       <background color="-13080698"/>
     </properties>
     <border type="none"/>
-    <children/>
+    <children>
+      <grid id="e91aa" binding="topPanel" layout-manager="FlowLayout" hgap="30" vgap="30" flow-align="1">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-13149590"/>
+          <preferredSize width="10" height="100"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="80ad5" class="javax.swing.JButton" binding="院系管理Button" default-binding="true">
+            <constraints/>
+            <properties>
+              <background color="-9796967"/>
+              <borderPainted value="true"/>
+              <opaque value="true"/>
+              <preferredSize width="120" height="35"/>
+              <text value="院系管理"/>
+            </properties>
+          </component>
+          <component id="5ed66" class="javax.swing.JButton" binding="班级管理Button" default-binding="true">
+            <constraints/>
+            <properties>
+              <background color="-9796967"/>
+              <borderPainted value="true"/>
+              <preferredSize width="120" height="35"/>
+              <text value="班级管理"/>
+            </properties>
+          </component>
+          <component id="6ef5a" class="javax.swing.JButton" binding="学生管理Button" default-binding="true">
+            <constraints/>
+            <properties>
+              <background color="-9796967"/>
+              <borderPainted value="true"/>
+              <preferredSize width="120" height="35"/>
+              <text value="学生管理"/>
+            </properties>
+          </component>
+          <component id="93696" class="javax.swing.JButton" binding="奖惩管理Button" default-binding="true">
+            <constraints/>
+            <properties>
+              <background color="-9796967"/>
+              <borderPainted value="true"/>
+              <preferredSize width="120" height="35"/>
+              <text value="奖惩管理"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="d9613" binding="centerPanel" layout-manager="CardLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <background color="-10783354"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="55d0d" binding="departmentPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <card name="Card1"/>
+            </constraints>
+            <properties>
+              <background color="-10783354"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="4fb29" binding="classPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <card name="Card2"/>
+            </constraints>
+            <properties>
+              <background color="-9270119"/>
+              <visible value="false"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="3e843" binding="studentPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <card name="Card3"/>
+            </constraints>
+            <properties>
+              <background color="-9796967"/>
+              <visible value="false"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="b5079" binding="rewardPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <card name="Card4"/>
+            </constraints>
+            <properties>
+              <background color="-10187105"/>
+              <visible value="false"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </grid>
+        </children>
+      </grid>
+    </children>
   </grid>
 </form>
