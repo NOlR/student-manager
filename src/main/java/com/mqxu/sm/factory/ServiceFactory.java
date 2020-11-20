@@ -1,8 +1,10 @@
 package com.mqxu.sm.factory;
 
 import com.mqxu.sm.service.AdminService;
+import com.mqxu.sm.service.ClazzService;
 import com.mqxu.sm.service.DepartmentService;
 import com.mqxu.sm.service.impl.AdminServiceImpl;
+import com.mqxu.sm.service.impl.ClazzServiceImpl;
 import com.mqxu.sm.service.impl.DepartmentServiceImpl;
 
 /**
@@ -17,5 +19,9 @@ public class ServiceFactory {
 
     public static DepartmentService getDepartmentServiceInstance() {
         return new DepartmentServiceImpl();
+    }
+
+    public static ClazzService getClazzServiceInstance() {
+        return new ClazzServiceImpl();
     }
 }

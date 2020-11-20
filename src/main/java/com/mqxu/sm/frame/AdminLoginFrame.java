@@ -1,5 +1,6 @@
 package com.mqxu.sm.frame;
 
+import com.mqxu.sm.entity.Admin;
 import com.mqxu.sm.factory.ServiceFactory;
 import com.mqxu.sm.utils.ResultEntity;
 
@@ -36,7 +37,8 @@ public class AdminLoginFrame extends JFrame {
             if (resultEntity.getCode() == 0) {
                 //关闭登录界面，进入主界面
                 this.dispose();
-                new MainFrame();
+                Admin admin = (Admin) resultEntity.getData();
+                new MainFrame(admin.getAdminName());
             } else {
                 accountField.setText("");
                 passwordField.setText("");

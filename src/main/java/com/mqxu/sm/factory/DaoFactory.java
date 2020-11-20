@@ -1,8 +1,10 @@
 package com.mqxu.sm.factory;
 
 import com.mqxu.sm.dao.AdminDao;
+import com.mqxu.sm.dao.ClazzDao;
 import com.mqxu.sm.dao.DepartmentDao;
 import com.mqxu.sm.dao.impl.AdminDaoImpl;
+import com.mqxu.sm.dao.impl.ClazzDaoImpl;
 import com.mqxu.sm.dao.impl.DepartmentDaoImpl;
 
 /**
@@ -28,4 +30,14 @@ public class DaoFactory {
     public static DepartmentDao getDepartmentDaoInstance() {
         return new DepartmentDaoImpl();
     }
+
+    /**
+     * 获得ClazzDao实例
+     *
+     * @return ClazzDao实例
+     */
+    public static ClazzDao getClazzDaoInstance() {
+        return new ClazzDaoImpl();
+    }
+
 }
