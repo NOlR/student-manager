@@ -3,9 +3,11 @@ package com.mqxu.sm.factory;
 import com.mqxu.sm.dao.AdminDao;
 import com.mqxu.sm.dao.ClazzDao;
 import com.mqxu.sm.dao.DepartmentDao;
+import com.mqxu.sm.dao.StudentDao;
 import com.mqxu.sm.dao.impl.AdminDaoImpl;
 import com.mqxu.sm.dao.impl.ClazzDaoImpl;
 import com.mqxu.sm.dao.impl.DepartmentDaoImpl;
+import com.mqxu.sm.dao.impl.StudentDaoImpl;
 
 /**
  * @description: 工厂类
@@ -38,6 +40,15 @@ public class DaoFactory {
      */
     public static ClazzDao getClazzDaoInstance() {
         return new ClazzDaoImpl();
+    }
+
+    /**
+     * 获得StudentDao实例
+     *
+     * @return StudentDao实例
+     */
+    public static StudentDao getStudentDaoInstance() {
+        return new StudentDaoImpl();
     }
 
 }

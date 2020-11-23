@@ -23,4 +23,30 @@ public class ClazzDaoTest {
         }
         System.out.println(clazzList);
     }
+
+    @Test
+    public void insertClazz() {
+        Clazz clazz = new Clazz();
+        clazz.setDepartmentId(5);
+        clazz.setClassName("软件1851");
+        int n = 0;
+        try {
+            n = clazzDao.insertClazz(clazz);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        assertEquals(1, n);
+    }
+
+    @Test
+    public void deleteClazz() {
+        int n = 0;
+        try {
+            n = clazzDao.deleteClazz(28);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        assertEquals(1, n);
+    }
+
 }

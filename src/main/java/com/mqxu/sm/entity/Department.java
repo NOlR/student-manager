@@ -1,9 +1,6 @@
 package com.mqxu.sm.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 /**
  * @description: 院系实体类
@@ -19,4 +16,8 @@ public class Department {
     private String departmentName;
     private String logo;
 
+    @Override
+    public String toString() {
+        return this.departmentName;
+    }
 }

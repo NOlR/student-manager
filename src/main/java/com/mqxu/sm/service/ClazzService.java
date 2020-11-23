@@ -1,6 +1,7 @@
 package com.mqxu.sm.service;
 
 import com.mqxu.sm.entity.Clazz;
+import com.mqxu.sm.entity.Department;
 
 import java.util.List;
 
@@ -17,4 +18,19 @@ public interface ClazzService {
      * @return 班级列表
      */
     List<Clazz> getClazzByDepId(int depId);
+
+    /**
+     * 新增班级
+     *
+     * @param clazz 班级实体
+     * @return int
+     */
+    int addClazz(Clazz clazz);
+
+    /**
+     * 删除班级
+     * @param clazzId 班级id
+     * @return int
+     */
+    int deleteClazz(int clazzId);
 }
