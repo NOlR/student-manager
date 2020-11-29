@@ -4,6 +4,7 @@ import com.mqxu.sm.dao.ClazzDao;
 import com.mqxu.sm.entity.Clazz;
 import com.mqxu.sm.entity.Department;
 import com.mqxu.sm.utils.JdbcUtil;
+import sun.tools.asm.Cover;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,6 +27,28 @@ public class ClazzDaoImpl implements ClazzDao {
         PreparedStatement pstmt = connection.prepareStatement(sql);
         pstmt.setInt(1, departmentId);
         ResultSet rs = pstmt.executeQuery();
+        List<Clazz> list = convert(rs);
+        rs.close();
+        pstmt.close();
+        jdbcUtil.closeConnection();
+        return list;
+    }
+
+    @Override
+    public List<Clazz> selectAll() throws SQLException {
+        JdbcUtil jdbcUtil = JdbcUtil.getInitJdbcUtil();
+        Connection connection = jdbcUtil.getConnection();
+        String sql = "SELECT * FROM t_class ORDER BY id desc ";
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        ResultSet rs = pstmt.executeQuery();
+        List<Clazz> list = convert(rs);
+        rs.close();
+        pstmt.close();
+        jdbcUtil.closeConnection();
+        return list;
+    }
+
+    private List<Clazz> convert(ResultSet rs) throws SQLException {
         List<Clazz> clazzList = new ArrayList<>();
         while (rs.next()) {
             Clazz clazz = new Clazz();
@@ -34,9 +57,6 @@ public class ClazzDaoImpl implements ClazzDao {
             clazz.setClassName(rs.getString(("class_name")));
             clazzList.add(clazz);
         }
-        rs.close();
-        pstmt.close();
-        jdbcUtil.closeConnection();
         return clazzList;
     }
 
@@ -63,4 +83,5 @@ public class ClazzDaoImpl implements ClazzDao {
         pstmt.setInt(1, clazzId);
         return pstmt.executeUpdate();
     }
+
 }

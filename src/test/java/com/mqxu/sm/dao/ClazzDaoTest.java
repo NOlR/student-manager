@@ -14,13 +14,14 @@ public class ClazzDaoTest {
     private final ClazzDao clazzDao = DaoFactory.getClazzDaoInstance();
 
     @Test
-    public void selectByDepartmentId() {
-        List<Clazz> clazzList = null;
-        try {
-            clazzList = clazzDao.selectByDepartmentId(5);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+    public void selectByDepartmentId() throws Exception {
+        List<Clazz> clazzList = clazzDao.selectByDepartmentId(5);
+        System.out.println(clazzList);
+    }
+
+    @Test
+    public void selectAll() throws Exception {
+        List<Clazz> clazzList = clazzDao.selectAll();
         System.out.println(clazzList);
     }
 

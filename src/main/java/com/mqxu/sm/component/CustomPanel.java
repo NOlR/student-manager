@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * @description: 自定义面板
@@ -25,6 +26,10 @@ public class CustomPanel extends JPanel {
      */
     @Override
     protected void paintComponent(Graphics g) {
+        //super.paintComponent(g);
+        //ImageIcon icon = new ImageIcon(CustomPanel.class.getResource(path));
+        //icon.paintIcon(this, g, 0, 0);
+        //this.setOpaque(true);
         super.paintComponent(g);
         Image bg = null;
         try {

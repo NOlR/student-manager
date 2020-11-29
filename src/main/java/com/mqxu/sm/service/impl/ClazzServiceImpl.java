@@ -25,6 +25,17 @@ public class ClazzServiceImpl implements ClazzService {
     }
 
     @Override
+    public List<Clazz> selectAll() {
+        List<Clazz> list = null;
+        try {
+            list = DaoFactory.getClazzDaoInstance().selectAll();
+        } catch (SQLException e) {
+            System.err.println("查询所有班级列表出现异常");
+        }
+        return list;
+    }
+
+    @Override
     public int addClazz(Clazz clazz) {
         int n = 0;
         try {

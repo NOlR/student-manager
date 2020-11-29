@@ -3,6 +3,7 @@ package com.mqxu.sm.service;
 import com.mqxu.sm.entity.Clazz;
 import com.mqxu.sm.entity.Department;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -20,6 +21,13 @@ public interface ClazzService {
     List<Clazz> getClazzByDepId(int depId);
 
     /**
+     * 查询所有班级
+     *
+     * @return List<Clazz>
+     */
+    List<Clazz> selectAll();
+
+    /**
      * 新增班级
      *
      * @param clazz 班级实体
@@ -29,6 +37,7 @@ public interface ClazzService {
 
     /**
      * 删除班级
+     *
      * @param clazzId 班级id
      * @return int
      */
