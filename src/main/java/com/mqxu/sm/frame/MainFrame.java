@@ -8,23 +8,18 @@ import com.mqxu.sm.task.TimeThread;
 import com.mqxu.sm.utils.AliOSSUtil;
 import com.mqxu.sm.utils.FormatUtil;
 import com.mqxu.sm.vo.StudentVo;
-import com.sun.tools.internal.xjc.model.CClass;
 import sun.swing.table.DefaultTableCellHeaderRenderer;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeCellRenderer;
 import java.awt.*;
 
 import java.awt.event.*;
 import java.io.File;
-import java.util.Date;
 import java.util.List;
 
 
@@ -236,6 +231,13 @@ public class MainFrame extends JFrame {
             delBtn = new JButton("删除");
             delBtn.setBounds(160, 520, 90, 40);
 
+            delBtn.addActionListener(ee -> {
+                ServiceFactory.getStudentServiceInstance().deleteById(idLabel.getText());
+                JOptionPane.showMessageDialog(null, "删除成功");
+                showStudentTable(ServiceFactory.getStudentServiceInstance().selectAll());
+                reset();
+            });
+
             stuInfoPanel.add(idLabel);
             stuInfoPanel.add(avatar);
             stuInfoPanel.add(depName);
@@ -252,6 +254,7 @@ public class MainFrame extends JFrame {
 
         搜索Button.addActionListener(e -> {
             students = ServiceFactory.getStudentServiceInstance().selectByKeywords(searchField.getText().trim());
+            showStudentTable(students);
             searchField.setText("");
         });
 
@@ -353,32 +356,40 @@ public class MainFrame extends JFrame {
 
 
         重置Button.addActionListener(e -> {
-            //还原表格数据
-            List<StudentVo> studentList = ServiceFactory.getStudentServiceInstance().selectAll();
-            showStudentTable(studentList);
-            //院系下拉框还原
-            departmentJBox.setSelectedIndex(0);
-            //班级下拉框还原
-            clazzJBox.setSelectedIndex(0);
-            Clazz tip2 = new Clazz();
-            clazzJBox.addItem(tip2);
-            List<Clazz> clazzList = ServiceFactory.getClazzServiceInstance().selectAll();
-            for (Clazz clazz : clazzList) {
-                clazzJBox.addItem(clazz);
-            }
-            //右侧个人信息显示区域数据还原
-            avatar.setText("<html><img src='https://bpic.588ku.com/element_origin_min_pic/19/04/09/e3330d623cad123abc8545573a86cc38.jpg' width=50 height=50/></html>");
-            idLabel.setText("未选择");
-            depName.setText("未选择");
-            className.setText("未选择");
-            stuName.setText("未选择");
-            gender.setText("未选择");
-            birthday.setText("未选择");
-            address.setText("");
-            phone.setText("");
-            //搜索框清空
-            searchField.setText("");
+            reset();
         });
+
+        新增学生Button.addActionListener(e -> {
+            new AddStudentFrame(MainFrame.this);
+            MainFrame.this.setEnabled(true);
+        });
+    }
+
+    private void reset() {
+        //还原表格数据
+        List<StudentVo> studentList = ServiceFactory.getStudentServiceInstance().selectAll();
+        showStudentTable(studentList);
+        //院系下拉框还原
+        departmentJBox.setSelectedIndex(0);
+        //班级下拉框还原
+        clazzJBox.setSelectedIndex(0);
+        Clazz tip2 = new Clazz();
+        clazzJBox.addItem(tip2);
+        List<Clazz> clazzList = ServiceFactory.getClazzServiceInstance().selectAll();
+        for (Clazz clazz : clazzList) {
+            clazzJBox.addItem(clazz);
+        }
+        //右侧个人信息显示区域数据还原
+        avatar.setText("<html><img src='https://bpic.588ku.com/element_origin_min_pic/19/04/09/e3330d623cad123abc8545573a86cc38.jpg' width=50 height=50/></html>");
+        idLabel.setText("未选择");
+        depName.setText("未选择");
+        className.setText("未选择");
+        stuName.setText("未选择");
+        gender.setText("未选择");
+        birthday.setText("未选择");
+        address.setText("");
+        phone.setText("");
+        searchField.setText("");
     }
 
 
@@ -542,7 +553,7 @@ public class MainFrame extends JFrame {
         }
     }
 
-    private void showStudentTable(List<StudentVo> studentList) {
+    public void showStudentTable(List<StudentVo> studentList) {
         tablePanel.removeAll();
         //创建表格
         JTable table = new JTable();
@@ -569,7 +580,7 @@ public class MainFrame extends JFrame {
         //设置表头大小
         head.setPreferredSize(new Dimension(head.getWidth(), 40));
         //设置表头字体
-        head.setFont(new Font("楷体", Font.PLAIN, 22));
+        head.setFont(new Font("楷体", Font.PLAIN, 16));
         //设置表格行高
         table.setRowHeight(35);
         //表格背景色
@@ -586,7 +597,7 @@ public class MainFrame extends JFrame {
         //表格内容选择监听，点击一行，在右边显示这个学生信息
         table.getSelectionModel().addListSelectionListener(e -> {
             int row = table.getSelectedRow();
-            idLabel.setText("学号：" + table.getValueAt(row, 0).toString());
+            idLabel.setText(table.getValueAt(row, 0).toString());
             depName.setText(table.getValueAt(row, 1).toString());
             className.setText(table.getValueAt(row, 2).toString());
             stuName.setText(table.getValueAt(row, 3).toString());

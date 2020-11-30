@@ -1,5 +1,6 @@
 package com.mqxu.sm.service;
 
+import com.mqxu.sm.entity.Student;
 import com.mqxu.sm.vo.StudentVo;
 
 import java.sql.SQLException;
@@ -42,5 +43,43 @@ public interface StudentService {
      */
     List<StudentVo> selectByKeywords(String keywords);
 
+    /**
+     * 更新学生信息
+     *
+     * @param student 学生对象
+     * @return int
+     */
+    int updateStudent(Student student);
 
+    /**
+     * 删除学生
+     *
+     * @param id id
+     * @return int
+     */
+    int deleteById(String id);
+
+    /**
+     * 新增学生
+     *
+     * @param student 学生对象
+     * @return int
+     */
+    int insertStudent(Student student);
+
+    /**
+     * 根据院系统计学生数
+     *
+     * @param departmentId 院系id
+     * @return 学生数量
+     */
+    int countByDepartmentId(int departmentId);
+
+    /**
+     * 根据班级统计学生数量
+     *
+     * @param classId 班级id
+     * @return 学生数量
+     */
+    int countStudentByClassId(int classId);
 }
