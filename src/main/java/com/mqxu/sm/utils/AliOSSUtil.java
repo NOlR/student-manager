@@ -24,8 +24,8 @@ public class AliOSSUtil {
         //Endpoint以杭州为例，其它Region请按实际情况填写
         String endpoint = "http://oss-cn-hangzhou.aliyuncs.com";
         //accessKeyId和accessKeySecret，请填写自己的
-        String accessKeyId = "LTAI4G12S8zv5nLJr7t5K8ws";
-        String accessKeySecret = "TGb8iDSktxsVWWIQLnrCkHgTqAOgog";
+        String accessKeyId = "";
+        String accessKeySecret = "";
         //Bucket名称
         String bucketName = "niit-soft";
         //目录名称
